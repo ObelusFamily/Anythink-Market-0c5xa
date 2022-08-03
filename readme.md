@@ -9,32 +9,6 @@ Please find more info about each part in the relevant Readme file ([frontend](fr
 When implementing a new feature or fixing a bug, please create a new pull request against `main` from a feature/bug branch and add `@vanessa-cooper` as reviewer.
 
 ## How to run locally?
-
-**It's required to have Docker to run this project.**
-
-To start the project with docker-compose:
-
-```
-docker-compose up
-```
-or
-
- Also, you can use this to run commands on a running container.
-```
-docker exec
-```
-
-To stop the project:
-```
-docker-compose down
-```
-
-The frontend will up on port 3001:
-```
-http://localhost:3001/
-```
-
-The backend will up on port 3000:
-```
-http://localhost:3000/
-```
+1. [Install Docker](https://docs.docker.com/get-docker/)
+2. [Install Docker Compose](https://docs.docker.com/compose/install/)
+3. Run `docker-compose up`. 
