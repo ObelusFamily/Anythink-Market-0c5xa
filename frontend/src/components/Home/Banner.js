@@ -1,35 +1,31 @@
 import React from "react";
+import agent from "../../agent";
 import logo from "../../imgs/logo.png";
-import { connect } from "react-redux";
-import { UPDATE_TITLE_SEARCH_TERM } from "../../constants/actionTypes";
 
-const Banner = (props) => {
-  const searchHandler = (ev) => {
-    ev.preventDefault();
-    const { value } = ev.target;
-    props.dispatch({
-      type: UPDATE_TITLE_SEARCH_TERM,
-      payload: { titleSearchTerm: value },
-    });
+const Banner = ({ onSearch, search }) => {
+  console.log("search", search);
+  const onInput = (event) => {
+    const newSearch = event.currentTarget.value;
+
+    onSearch(
+      newSearch,
+      (page) => agent.Items.byTitle(newSearch, page),
+      agent.Items.byTitle(newSearch)
+    );
   };
+
   return (
     <div className="banner text-white">
       <div className="container p-4 text-center">
         <img src={logo} alt="banner" />
-        <div />
-        <div className="d-flex flex-row justify-content-center align-items-baseline">
+        <div>
           <span id="get-part">A place to get</span>
-          <form className="col-7">
-            <fieldset className="form-group">
-              <input
-                className="form-control"
-                id="search-box"
-                type="search"
-                placeholder="What is it that you truly desire?"
-                onChange={searchHandler}
-              />
-            </fieldset>
-          </form>
+          <input
+            id="search-box"
+            placeholder="What is it that you truly desire?"
+            value={search}
+            onInput={onInput}
+          />
           <span> the cool stuff.</span>
         </div>
       </div>
@@ -37,4 +33,4 @@ const Banner = (props) => {
   );
 };
 
-export default connect()(Banner);
+export default Banner;

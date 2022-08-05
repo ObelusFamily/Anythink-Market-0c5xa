@@ -68,6 +68,7 @@ const reducer = (state = {}, action) => {
         tab: action.tab,
         currentPage: 0,
         tag: null,
+        search: null,
       };
     case PROFILE_PAGE_LOADED:
     case UPDATE_TITLE_SEARCH_TERM:
