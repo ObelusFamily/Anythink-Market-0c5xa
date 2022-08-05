@@ -1,17 +1,14 @@
 import ItemPreview from "./ItemPreview";
 import ListPagination from "./ListPagination";
 import React from "react";
-import cryImage from "../imgs/crying-emoji.png";
 
 const ItemList = (props) => {
   let items = props.items;
   if (!props.items) {
     return <div className="py-4">Loading...</div>;
   }
-  if (
-    items.length === 0 &&
-    (!props.titleSearchTerm || props.titleSearchTerm < 3)
-  ) {
+
+  if (props.items.length === 0) {
     return <div className="py-4 no-items">No items are here... yet.</div>;
   }
 
@@ -22,16 +19,7 @@ const ItemList = (props) => {
         .includes(props.titleSearchTerm.toLowerCase().trim())
     );
   }
-  if (items.length === 0) {
-    return (
-      <div className="notFound-box">
-        <div id="empty" className="noItem">
-          <img src={cryImage} alt="disappointed emogi" />
-          <p>No items found for "{props.titleSearchTerm}".</p>
-        </div>
-      </div>
-    );
-  }
+
   return (
     <div className="container py-2">
       <div className="row">
